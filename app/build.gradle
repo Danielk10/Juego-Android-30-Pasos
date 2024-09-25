@@ -1,6 +1,8 @@
-plugins {
-    alias(libs.plugins.android.application)
-}
+//plugins {
+   // alias(libs.plugins.android.application)
+//}
+
+apply plugin: 'com.android.application'
 
 android {
     namespace 'com.diamon.ganar'
@@ -28,16 +30,29 @@ android {
     }
 }
 
-dependencies {
+ext {
+    versions = [
+        agp            : "8.6.0",
+        junit          : "4.13.2",
+        junitVersion   : "1.1.5",
+        espressoCore   : "3.5.1",
+        appcompat      : "1.6.1",
+        material       : "1.10.0",
+        activity       : "1.8.0",
+        constraintlayout: "2.1.4"
+    ]
+}
 
-    implementation libs.appcompat
-    implementation libs.material
-    implementation libs.activity
-    implementation libs.constraintlayout
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
-    def appCenterSdkVersion = '5.0.4'
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+dependencies {
+    // JUnit
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.junitVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.espressoCore}"
+
+    // AndroidX libraries
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "com.google.android.material:material:${versions.material}"
+    implementation "androidx.activity:activity:${versions.activity}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
 }
