@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AppNII"
+rootProject.name = "Juego-Android-30-Pasos"
 include ':app'
